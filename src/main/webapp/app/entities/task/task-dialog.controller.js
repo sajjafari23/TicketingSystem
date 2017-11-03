@@ -3,16 +3,17 @@
 
     angular
         .module('ticketingSystemApp')
-        .controller('RequestTypeDialogController', RequestTypeDialogController);
+        .controller('TaskDialogController', TaskDialogController);
 
-    RequestTypeDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'RequestType', 'TaskType'];
+    TaskDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Task', 'User', 'TaskType'];
 
-    function RequestTypeDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, RequestType, TaskType) {
+    function TaskDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Task, User, TaskType) {
         var vm = this;
 
-        vm.requestType = entity;
+        vm.task = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.users = User.query();
         vm.tasktypes = TaskType.query();
 
         $timeout(function (){
@@ -25,15 +26,15 @@
 
         function save () {
             vm.isSaving = true;
-            if (vm.requestType.id !== null) {
-                RequestType.update(vm.requestType, onSaveSuccess, onSaveError);
+            if (vm.task.id !== null) {
+                Task.update(vm.task, onSaveSuccess, onSaveError);
             } else {
-                RequestType.save(vm.requestType, onSaveSuccess, onSaveError);
+                Task.save(vm.task, onSaveSuccess, onSaveError);
             }
         }
 
         function onSaveSuccess (result) {
-            $scope.$emit('ticketingSystemApp:requestTypeUpdate', result);
+            $scope.$emit('ticketingSystemApp:taskUpdate', result);
             $uibModalInstance.close(result);
             vm.isSaving = false;
         }

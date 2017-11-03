@@ -1,23 +1,20 @@
 package ir.ac.kntu.ticketing.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
 
 /**
- * A RequestType.
+ * A Task.
  */
 @Entity
-@Table(name = "request_type")
+@Table(name = "task")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class RequestType implements Serializable {
+public class Task implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -33,10 +30,11 @@ public class RequestType implements Serializable {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @OneToMany(mappedBy = "requestType")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<TaskType> taskTypes = new HashSet<>();
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private TaskType taskType;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -51,7 +49,7 @@ public class RequestType implements Serializable {
         return code;
     }
 
-    public RequestType code(String code) {
+    public Task code(String code) {
         this.code = code;
         return this;
     }
@@ -64,7 +62,7 @@ public class RequestType implements Serializable {
         return title;
     }
 
-    public RequestType title(String title) {
+    public Task title(String title) {
         this.title = title;
         return this;
     }
@@ -73,29 +71,30 @@ public class RequestType implements Serializable {
         this.title = title;
     }
 
-    public Set<TaskType> getTaskTypes() {
-        return taskTypes;
+    public User getUser() {
+        return user;
     }
 
-    public RequestType taskTypes(Set<TaskType> taskTypes) {
-        this.taskTypes = taskTypes;
+    public Task user(User user) {
+        this.user = user;
         return this;
     }
 
-    public RequestType addTaskType(TaskType taskType) {
-        this.taskTypes.add(taskType);
-        taskType.setRequestType(this);
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public TaskType getTaskType() {
+        return taskType;
+    }
+
+    public Task taskType(TaskType taskType) {
+        this.taskType = taskType;
         return this;
     }
 
-    public RequestType removeTaskType(TaskType taskType) {
-        this.taskTypes.remove(taskType);
-        taskType.setRequestType(null);
-        return this;
-    }
-
-    public void setTaskTypes(Set<TaskType> taskTypes) {
-        this.taskTypes = taskTypes;
+    public void setTaskType(TaskType taskType) {
+        this.taskType = taskType;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -107,11 +106,11 @@ public class RequestType implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        RequestType requestType = (RequestType) o;
-        if (requestType.getId() == null || getId() == null) {
+        Task task = (Task) o;
+        if (task.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), requestType.getId());
+        return Objects.equals(getId(), task.getId());
     }
 
     @Override
@@ -121,7 +120,7 @@ public class RequestType implements Serializable {
 
     @Override
     public String toString() {
-        return "RequestType{" +
+        return "Task{" +
             "id=" + getId() +
             ", code='" + getCode() + "'" +
             ", title='" + getTitle() + "'" +
