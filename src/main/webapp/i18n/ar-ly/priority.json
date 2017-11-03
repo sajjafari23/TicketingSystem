@@ -1,0 +1,22 @@
+{
+    "ticketingSystemApp": {
+        "priority" : {
+            "home": {
+                "title": "Priorities",
+                "createLabel": "Create a new Priority",
+                "createOrEditLabel": "Create or edit a Priority"
+            },
+            "created": "A new Priority is created with identifier {{ param }}",
+            "updated": "A Priority is updated with identifier {{ param }}",
+            "deleted": "A Priority is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Priority {{ id }}?"
+            },
+            "detail": {
+                "title": "Priority"
+            },
+            "code": "Code",
+            "title": "Title"
+        }
+    }
+}

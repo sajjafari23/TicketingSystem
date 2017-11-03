@@ -45,6 +45,9 @@ public class CacheConfiguration {
             cm.createCache(ir.ac.kntu.ticketing.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(ir.ac.kntu.ticketing.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(ir.ac.kntu.ticketing.domain.SocialUserConnection.class.getName(), jcacheConfiguration);
+            cm.createCache(ir.ac.kntu.ticketing.domain.Request.class.getName(), jcacheConfiguration);
+            cm.createCache(ir.ac.kntu.ticketing.domain.RequestType.class.getName(), jcacheConfiguration);
+            cm.createCache(ir.ac.kntu.ticketing.domain.Priority.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

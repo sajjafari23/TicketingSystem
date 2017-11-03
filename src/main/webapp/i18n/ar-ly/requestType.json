@@ -1,0 +1,22 @@
+{
+    "ticketingSystemApp": {
+        "requestType" : {
+            "home": {
+                "title": "Request Types",
+                "createLabel": "Create a new Request Type",
+                "createOrEditLabel": "Create or edit a Request Type"
+            },
+            "created": "A new Request Type is created with identifier {{ param }}",
+            "updated": "A Request Type is updated with identifier {{ param }}",
+            "deleted": "A Request Type is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Request Type {{ id }}?"
+            },
+            "detail": {
+                "title": "Request Type"
+            },
+            "code": "Code",
+            "title": "Title"
+        }
+    }
+}
