@@ -16,7 +16,8 @@
                 "title": "Request Type"
             },
             "code": "Code",
-            "title": "Title"
+            "title": "Title",
+            "taskType": "Task Type"
         }
     }
 }

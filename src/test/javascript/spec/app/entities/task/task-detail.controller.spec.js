@@ -2,9 +2,9 @@
 
 describe('Controller Tests', function() {
 
-    describe('RequestType Management Detail Controller', function() {
+    describe('Task Management Detail Controller', function() {
         var $scope, $rootScope;
-        var MockEntity, MockPreviousState, MockRequestType, MockTaskType;
+        var MockEntity, MockPreviousState, MockTask, MockUser, MockTaskType;
         var createController;
 
         beforeEach(inject(function($injector) {
@@ -12,7 +12,8 @@ describe('Controller Tests', function() {
             $scope = $rootScope.$new();
             MockEntity = jasmine.createSpy('MockEntity');
             MockPreviousState = jasmine.createSpy('MockPreviousState');
-            MockRequestType = jasmine.createSpy('MockRequestType');
+            MockTask = jasmine.createSpy('MockTask');
+            MockUser = jasmine.createSpy('MockUser');
             MockTaskType = jasmine.createSpy('MockTaskType');
             
 
@@ -21,18 +22,19 @@ describe('Controller Tests', function() {
                 '$rootScope': $rootScope,
                 'entity': MockEntity,
                 'previousState': MockPreviousState,
-                'RequestType': MockRequestType,
+                'Task': MockTask,
+                'User': MockUser,
                 'TaskType': MockTaskType
             };
             createController = function() {
-                $injector.get('$controller')("RequestTypeDetailController", locals);
+                $injector.get('$controller')("TaskDetailController", locals);
             };
         }));
 
 
         describe('Root Scope Listening', function() {
             it('Unregisters root scope listener upon scope destruction', function() {
-                var eventType = 'ticketingSystemApp:requestTypeUpdate';
+                var eventType = 'ticketingSystemApp:taskUpdate';
 
                 createController();
                 expect($rootScope.$$listenerCount[eventType]).toEqual(1);

@@ -2,10 +2,16 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "taskType",
-            "otherEntityName": "taskType",
+            "relationshipName": "task",
+            "otherEntityName": "task",
             "relationshipType": "one-to-many",
-            "otherEntityRelationshipName": "requestType"
+            "otherEntityRelationshipName": "taskType"
+        },
+        {
+            "relationshipName": "requestType",
+            "otherEntityName": "requestType",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "title"
         }
     ],
     "fields": [
@@ -24,10 +30,10 @@
             ]
         }
     ],
-    "changelogDate": "20171103125155",
+    "changelogDate": "20171103163004",
     "dto": "no",
     "service": "serviceImpl",
-    "entityTableName": "request_type",
+    "entityTableName": "task_type",
     "jpaMetamodelFiltering": false,
     "pagination": "pager"
 }

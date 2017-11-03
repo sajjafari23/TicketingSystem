@@ -5,9 +5,9 @@
         .module('ticketingSystemApp')
         .controller('RequestTypeDetailController', RequestTypeDetailController);
 
-    RequestTypeDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'RequestType'];
+    RequestTypeDetailController.$inject = ['$scope', '$rootScope', '$stateParams', 'previousState', 'entity', 'RequestType', 'TaskType'];
 
-    function RequestTypeDetailController($scope, $rootScope, $stateParams, previousState, entity, RequestType) {
+    function RequestTypeDetailController($scope, $rootScope, $stateParams, previousState, entity, RequestType, TaskType) {
         var vm = this;
 
         vm.requestType = entity;

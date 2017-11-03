@@ -10,6 +10,8 @@
                 "request": "Request",
                 "requestType": "Request Type",
                 "priority": "Priority",
+                "taskType": "Task Type",
+                "task": "Task",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
