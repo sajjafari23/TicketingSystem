@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20171103125155",
+    "dto": "no",
+    "service": "serviceImpl",
+    "entityTableName": "request_type",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pager"
+}
